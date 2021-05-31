@@ -6,38 +6,35 @@ using UnityEngine.UI;
 public class Hitpoints : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private float _dammage;
+    [SerializeField] private float _damage;
     [SerializeField] private float _healValue;
     [SerializeField] private float _speed;
-    [SerializeField] private Troop _troop;
-
-    private float _currentValue;
+    [SerializeField] private Player _player;
 
     private void Start()
     {
-        _slider.maxValue = _troop.GetHitpoints();
-        _slider.value = _slider.maxValue;
-        _currentValue = _slider.value;
+        _slider.maxValue = _player.MaxHitpoints;
+        _slider.value = _player.CurrentHitpoints;
     }
 
     private IEnumerator ChangeValue()
     {
-        while (_currentValue != _slider.value)
+        while (_player.CurrentHitpoints != _slider.value)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _currentValue, _speed * Time.deltaTime);
+            _slider.value = Mathf.MoveTowards(_slider.value, _player.CurrentHitpoints, _speed * Time.deltaTime);
             yield return _speed * Time.deltaTime;
         }
     }
 
     public void TakeDammage()
     {
-        _currentValue -= _dammage;
+        _player.TakeDamage(_damage);
         StartCoroutine(ChangeValue());
     }
 
     public void Heal()
     {
-        _currentValue += _healValue;
+        _player.TakeHealwave(_healValue);
         StartCoroutine(ChangeValue());
     }
 }

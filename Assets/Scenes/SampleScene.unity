@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 183031003}
-  _dammage: 10
-  _healValue: 15
+  _damage: 10
+  _healValue: 10
   _speed: 15
-  _troop: {fileID: 1234047523}
+  _player: {fileID: 1234047523}
