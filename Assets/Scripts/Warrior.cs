@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour //Класс игрока, в котором записана информация о его текущем ХП и максимальном количестве ХП.
+public class Warrior : MonoBehaviour 
 {
     [SerializeField] private float _maxHitpoints;
-
-    private float _currentHitpoints;
+    [SerializeField]  private float _currentHitpoints;
 
     public float MaxHitpoints => _maxHitpoints;
     public float CurrentHitpoints => _currentHitpoints;
@@ -21,7 +20,7 @@ public class Player : MonoBehaviour //Класс игрока, в котором
         _currentHitpoints -= damage;
     }
 
-    public void TakeHealwave(float healValue)
+    public void TakeHeal(float healValue)
     {
         _currentHitpoints += healValue;
     }
